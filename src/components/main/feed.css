@@ -1,0 +1,106 @@
+.feed{
+    border-right: 1px solid var(--twitter-background);
+    min-width: 250px;
+    max-width: 630px;
+    width: 630px;
+    height: 100vh;
+    padding-top: 20px;
+}
+.feed-header{
+    display: flex;
+    justify-content: center;
+    border-bottom: rgb(235, 232, 232) 1px solid;
+    gap: 20%;
+    height: 50px;
+    flex-basis: 40px;
+}
+.feed-header h3:hover{
+    color: var(--twitter-color);
+    cursor: pointer;
+}
+.active_feed{
+    border-bottom: solid 5px var(--twitter-color);
+}
+.post{
+    height: 15vh;
+    border-bottom: 1px solid rgb(226, 226, 226);
+
+}
+.inner_post{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.inner_post input{
+    padding: 15px;
+    outline:none;
+    border: none;
+    padding-right: 400px;
+}
+.inner_post img{
+    border-radius: 50%;
+    height: 40px;
+    object-fit: cover;
+}
+
+.inner_post i{
+    font-size: 30px;
+}
+
+.post_filters button{
+    padding: 15px;
+    width: 80px;
+    background-color: var(--twitter-color);
+    border-radius: 30%;
+    border: none;
+    color: white;
+    outline: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    left: 370px;
+}
+.post_filters i{
+    padding: 10px;
+    color: var(--twitter-color);
+}
+.tweets{
+    flex-wrap: wrap;
+
+}
+
+.tweets .tweet{
+    display: flex;
+    flex-shrink: 1;
+    border-top: 1px solid rgb(226, 226, 226);
+    border-bottom: 1px solid rgb(226, 226, 226);
+    max-height: 100vh;
+    padding: 20px;
+}
+.tweets .tweet img{
+    box-sizing: border-box;
+    border-radius: 50%;
+    flex-basis: 40px;
+    flex-shrink: 1;
+    height: 40px;
+    width: 40px;
+}
+.tweets .tweet h3{
+    display: block;
+    justify-content: center;
+    margin-left: 10px;
+    max-width: calc(100% - 90px);
+    line-height: 1.5em;
+    font-size: 1.1rem;
+
+}
+
+.tweets .tweet p{
+    justify-content: center;
+    margin-left: -35px;
+    margin-top: 40px;
+    max-width: calc(100% - 90px);
+    line-height: 1.5em;
+    font-size: 1rem;
+
+}
