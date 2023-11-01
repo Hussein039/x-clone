@@ -38,7 +38,7 @@ function Sidebar() {
       </div>
       <div className="sidebar_options">
         <i class="fa-brands fa-x-twitter fa-2xl"></i>
-        <h2>Permium</h2>
+        <h2>Premium</h2>
       </div>
       <div className="sidebar_options">
         <i class="fa-regular fa-user"></i>
