@@ -104,3 +104,17 @@
     font-size: 1rem;
 
 }
+
+.tweets .reaction{
+    display: flex;
+    justify-content: space-around;
+}
+.tweets .reaction .heart{
+    color: red;
+}
+.tweets .reaction .comment{
+    color: var(--twitter-color);
+}
+.tweets .reaction .repost{
+    color: rgb(115, 226, 115);
+}

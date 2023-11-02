@@ -6,6 +6,7 @@ const Feed = () => {
     const [inputField, setInputField] = useState("");
     const [list, setList] = useState([]);
     const [name, setName] = useState('User');
+    const [likes, setLike] = useState(0);
     
 
     useEffect(() => {
@@ -25,10 +26,17 @@ const Feed = () => {
     const addItemToList = () => {
         if (!inputField || inputField === "") return;
         let newArray = [...list, { text: inputField }];
-        setList(newArray);
+        setList(newArray.reverse());
         setInputField("");
         localStorage.setItem('posts', JSON.stringify(newArray));
     };
+    
+    const handleLike = (index) => {
+        let newArray = [...list];
+        newArray[index].likes += 1;
+        setList(newArray);
+        localStorage.setItem('posts', JSON.stringify(newArray));
+    }
 
     return (
         <div className='feed'>
@@ -59,11 +67,21 @@ const Feed = () => {
             <div className='tweets'>
             {
                 list.map((item, index) =>
-                    <div key={index} className='tweet'>
-                        <img src={postImg} />
-                        <h3>{name}</h3>
-                        <p>{item.text}</p>
-                    </div>)
+                    <div key={index} >
+                        <div className='tweet'>
+                            <img src={postImg} />
+                            <h3>{name}</h3>
+                            <p>{item.text}</p>
+                        </div>
+                        <div className='reaction'>
+                            <span className='heart' onClick={() => handleLike(index)}>
+                                <i className="far fa-heart"></i>{item.likes}
+                            </span>
+                            <span className='comment'><i className="far fa-comment"></i></span>
+                            <span className='repost'><i className="fas fa-retweet"></i></span>
+                        </div>
+                    </div>
+                )
             }
             </div>
             
@@ -72,3 +90,5 @@ const Feed = () => {
 }
 
 export default Feed
+
+
