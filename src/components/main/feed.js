@@ -6,7 +6,7 @@ const Feed = () => {
     const [inputField, setInputField] = useState("");
     const [list, setList] = useState([]);
     const [name, setName] = useState('User');
-    const [likes, setLike] = useState(0);
+
     
 
     useEffect(() => {
@@ -25,17 +25,40 @@ const Feed = () => {
 
     const addItemToList = () => {
         if (!inputField || inputField === "") return;
-        let newArray = [...list, { text: inputField }];
+        let newArray = [...list, { text: inputField, likes: 0, liked: false }];
         setList(newArray.reverse());
         setInputField("");
         localStorage.setItem('posts', JSON.stringify(newArray));
     };
+
+    const handleDelete = (index) => {
+        const isConfirmed = window.confirm("Are you sure you want to delete this post?");
+        if (isConfirmed) {
+            let newArray = [...list];
+            newArray.splice(index, 1);
+            setList(newArray);
+            localStorage.setItem('posts', JSON.stringify(newArray));
+        }
+    }
     
+
+
     const handleLike = (index) => {
         let newArray = [...list];
-        newArray[index].likes += 1;
-        setList(newArray);
-        localStorage.setItem('posts', JSON.stringify(newArray));
+        if (!newArray[index].liked) {
+            newArray[index].likes += 1;
+            newArray[index].liked = true;
+            setList(newArray);
+            localStorage.setItem('posts', JSON.stringify(newArray));
+        } else if (newArray[index].liked) {
+            if (newArray[index].liked <= 0) {
+                return 0;
+            }
+            newArray[index].likes -= 1;
+            newArray[index].liked = false;
+            setList(newArray);
+            localStorage.setItem('posts', JSON.stringify(newArray));
+        }
     }
 
     return (
@@ -79,6 +102,7 @@ const Feed = () => {
                             </span>
                             <span className='comment'><i className="far fa-comment"></i></span>
                             <span className='repost'><i className="fas fa-retweet"></i></span>
+                            <span onClick={handleDelete}><i className='fas fa-remove'></i></span>
                         </div>
                     </div>
                 )
