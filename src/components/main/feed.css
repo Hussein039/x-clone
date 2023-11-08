@@ -72,8 +72,7 @@
 .tweets .tweet{
     display: flex;
     flex-shrink: 1;
-    border-top: 1px solid rgb(226, 226, 226);
-    border-bottom: 1px solid rgb(226, 226, 226);
+    border-top: 1px solid rgb(245, 245, 245);
     max-height: 100vh;
     padding: 20px;
 }
@@ -108,13 +107,17 @@
 .tweets .reaction{
     display: flex;
     justify-content: space-around;
+    padding-bottom: 10px;
 }
 .tweets .reaction .heart{
     color: red;
+    cursor: pointer;
 }
 .tweets .reaction .comment{
     color: var(--twitter-color);
+    cursor: pointer;
 }
 .tweets .reaction .repost{
     color: rgb(115, 226, 115);
+    cursor: pointer;
 }
